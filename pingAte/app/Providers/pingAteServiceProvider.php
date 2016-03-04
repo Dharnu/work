@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Providers;
-use App;
+
 use Illuminate\Support\ServiceProvider;
 
-class makeSoapRequestServiceProvider extends ServiceProvider
+class pingAteServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -18,14 +18,11 @@ class makeSoapRequestServiceProvider extends ServiceProvider
 
     /**
      * Register the application services.
-     * 
+     *
      * @return void
      */
     public function register()
     {
-       App::bind('makeSoapRequest',function(){
-		return new \App\MyTrippediaClasses\makeSoapRequest;
-
-	}); 
+       App::bind('App\MyTrippediaClasses\pingATE','App\MyTrippediaClasses\pingATECurl'); 
     }
 }
