@@ -34,7 +34,8 @@ public function getEnvolopeLength(){
 
 
 public function getSoapEnvolope(){
-	return $this->envolope;
+//	return $this->envolope;
+	var_dump($this->envolope);
 }	
 }
 

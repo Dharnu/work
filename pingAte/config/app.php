@@ -157,7 +157,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
 	//mytripedia providers
-	App\Providers\makeSoapRequestServiceProvider::class
+	App\Providers\makeSoapRequestServiceProvider::class,
+	App\Providers\pingAteServiceProvider::class
 
     ],
 
@@ -205,7 +206,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 	//mytrippedia
-	'makeSoapRequest'=>App\MytrippediaFacades\makeSoapRequest::class
+	'makeSoapRequest'=>App\MytrippediaFacades\makeSoapRequest::class,
+	'pingAte'=>App\MytrippediaFacades\pingATE::class
+	
     ],
 
 ];

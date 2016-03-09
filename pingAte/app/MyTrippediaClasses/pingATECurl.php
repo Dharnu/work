@@ -38,16 +38,19 @@ private function prepareRequest(){
         curl_setopt($this->request, CURLOPT_POSTFIELDS, makeSoapRequest::getSoapEnvolope()); 
 }
 private function prepareHeaders(&$data){
-	array_unshift($this->headers,$data["SoapAction"]);
+	array_unshift($this->headers,"SOAPACTION: ".$data["SoapAction"]);
 	array_unshift($this->headers,"Content-length: ".makeSoapRequest::getEnvolopeLength());
 	if(!isset($data["Cookie"])){	
 				array_unshift($this->headers,"Cookie: ".$data["Cookie"]);
 			}
 		}
 private function executeRequest(){
-	$this->prepareHeaders();
-	$this->prepareRequest();
-	curl_exec($this->request);
+	$this->parseResponse(curl_exec($this->request));
 	}
 
+private function  parseResponse(){
+	$header_size = curl_getinfo($this->request, CURLINFO_HEADER_SIZE);
+	$this->response["Header"]=substr($response, 0, $header_size);
+	$this->response["Body"] = substr($response, $header_size);
+}
 }
