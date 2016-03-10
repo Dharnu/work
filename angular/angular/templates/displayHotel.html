@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="mytrippedia">
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="directives.js"></script>
+    <script type="text/javascript" src="mytrippedia.js"></script>
+  </head>
+
+  <body ng-controller="SearchController as search">
+    <header>
+      <h2 class="text-center">– Hotel display –</h2>
+    </header>
+
+    <!--  Hotels Container  -->
+    <div class="list-group">
+      <!--  Hotel Container  -->
+      <div class="list-group-item" ng-repeat="hotel in search.hotels">
+	<hotel-details></hotel-details>
+        <!-- Image Gallery  -->
+        <product-gallery></product-gallery>
+
+      </div>
+
+    </div>
+  </body>
+</html>
+
+
