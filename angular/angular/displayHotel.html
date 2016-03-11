@@ -5,6 +5,8 @@
     <script type="text/javascript" src="angular.min.js"></script>
     <script type="text/javascript" src="directives.js"></script>
     <script type="text/javascript" src="mytrippedia.js"></script>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
   </head>
 
   <body ng-controller="SearchController as search">
@@ -18,7 +20,6 @@
       <div class="list-group-item" ng-repeat="hotel in search.hotels">
 	<hotel-details></hotel-details>
         <!-- Image Gallery  -->
-        <product-gallery></product-gallery>
 
       </div>
 
