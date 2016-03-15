@@ -4,6 +4,7 @@ app.directive('hotelDetails',function(){
 return{
 	restrict:'E',
 	templateUrl:"./templates/hotel-details.html",
+
 };
 });
 app.directive('hotelDescription',function(){
@@ -12,28 +13,70 @@ return{
 	templateUrl:"./templates/hotel-description.html",
 };
 });
+app.directive ('viewDeals',function(){
+return{	restrict:'E',
+	templateUrl:"./templates/view-deals.html",
+	}
+});
+app.filter("isArray",function(){
+	return function(input){
+		return angular.isArray(input);};
+});
+app.directive('agencyRates',function(){
+return{
+	restrict:'E',
+	templateUrl:"./templates/agency-rates.html",
+	controller:function($scope){
+	this.agencyData=$scope.hotel.HotelResultList.HotelResultSmall;
+	this.populateAgencies=function(){
+		var agencies=[];
+			for (j=0;j<this.agencyData.length;j++){
+			if(!angular.isArray(this.agencyData[j].Rooms.Room)){
+			agencies.push(this.agencyData[j]);
+//			console.log(this.agencyData[j]);
+								}
+			else {for(i=0;i<this.agencyData[j].Rooms.Room.length;i++){
+							//		agencies.push(this.agencyData[j].Rooms.Room[i]);
+								//	console.log(this.agencyData[j].AgencyName);
+								//	console.log(this.agencyData[j].Rooms.Room[i]);
+								agencies.push({AgencyName:this.agencyData[j].AgencyName,Rooms:{Room:this.agencyData[j].Rooms.Room[i]}});
+								//console.log(a);	}
+					} 
+					}
+}
+	console.log(agencies);
+	return agencies;
+};
+
+	this.agencies=this.populateAgencies();
+	this.getAgencies=function(count){
+	console.log(count)	;
+console.log(this.agencies.slice(0,4));
+	return this.agencies.slice(0,count);
+	};
+	
+	},
+	controllerAs:"aRates",
+	bindToController:true,
+}
+});
 app.directive('hotelImages',function(){
 return{
 	restrict:'E',
 	templateUrl:"./templates/hotel-images.html",
-	contoller:function($scope){
-			this.facilities ="GYM";
-			this.setFacilities=function($facilities){
-				console.log($scope);
-				this.facilities=facilities;
-				console.log("yo");
-				};
-			this.doesContain=function($facility){
-				console.log(this.facilities);
-				console.log("hi");
-				if(this.facilities.indexOf(facility)!==-1){
-					return 0;	
-					}
-				else return 1;
+	controller:function($scope){
+		this.facilities=[];
+		if($scope.hotel.Facilities)
+			{this.facilities.push($scope.hotel.Facilities.HotelFacilityType);
+			}
+		this.doesContainFacility=function( facility){
+			return this.facilities.indexOf(facility)>-1;
 				}
-			},
-	controllerAs:"hImages"
+},	controllerAs:"himages",
+bindToController:true,
+
 };
+	
 });
 
 }

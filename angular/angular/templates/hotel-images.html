@@ -2,10 +2,11 @@
   <div class="img-wrap">
 {{hotel.Facilities.HotelFacilityType}}
     <img ng-src="{{hotel.HotelImageUrlList.string[0]}}" />
-<div ng-init="hImages.setFacilities(hotel.Facilities.HotelFacilityType)" >
-<i class="fa fa-car" ng-show="hImages.doesContain('GYM')"></i>
-<i class="fa fa-wifi" ng-show=1></i>
-<i class="fa fa-barbell" ng-show=1></i>
+<div  >
+<i class="fa fa-car" ng-show="himages.doesContainFacility('INTERNET_WIFI')"></i>
+<i class="fa fa-wifi" ng-show="himages.doesContainFacility('GYM')"></i>
+<i class="fa fa-barbell" ng-show="himages.doesContainFacility('RESTAURANT')"></i>
+<i class="fa fa-wifi" ng-show="himages.doesContainFacility('POOL')"></i>
 </div>
 
 

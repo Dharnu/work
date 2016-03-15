@@ -1,0 +1,5 @@
+<div>
+<h3>agency data</h3>
+      <div class="list-group-item" ng-repeat="agency in aRates.getAgencies('4')">
+	<a href="{{agency.Rooms.Room.BookingUrl}}">{{agency.AgencyName}}</a>:{{agency.Rooms.Room.Price.Cost}}{{agency.Rooms.Room.Price.Currency}}
+</div>
